@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sujie 💕</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hearts">
+        <div class="heart">💕</div>
+        <div class="heart">💕</div>
+        <div class="heart">💕</div>
+        <div class="heart">💕</div>
+        <div class="heart">💕</div>
+    </div>
+
+    <div class="content">
+        <div class="emoji">💝</div>
+        <h1>Would you like to go on a second date?</h1>
+        <div class="button-group">
+            <button class="yes-btn" onclick="window.location.href='yes.html'">Yes</button>
+            <button class="no-btn" id="noBtn" onclick="handleNo()">No</button>
+        </div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        
+        function getRandomPosition() {
+            const btn = document.getElementById('noBtn');
+            const maxX = window.innerWidth - btn.offsetWidth - 40;
+            const maxY = window.innerHeight - btn.offsetHeight - 40;
+            
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            
+            return { x, y };
+        }
+        
+        function handleNo() {
+            const noBtn = document.getElementById('noBtn');
+            clickCount++;
+            
+            const pos = getRandomPosition();
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = pos.x + 'px';
+            noBtn.style.top = pos.y + 'px';
+            
+            if (clickCount === 1) {
+                noBtn.textContent = 'Are you sure?';
+            } else if (clickCount === 2) {
+                noBtn.textContent = 'Really?';
+            } else {
+                noBtn.textContent = 'Ups...';
+            }
+        }
+    </script>
+</body>
+</html>
